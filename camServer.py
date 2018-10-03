@@ -68,8 +68,9 @@ def imageStreamer(socket):
     socket.bind(("",8081)) # 8081 is the port this socket will be listening for, this number has to match the video port assigned in the app.
     socket.listen(1)
     
-    #cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) #uncomment and modify to set camera resolution width
-    #cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720) #uncomment and modify to set camera resolution height
+    #cam.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)#uncomment and modify to set camera resolution width
+    #cam.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)#uncomment and modify to set camera resolution height
+
    
     # set flip image to False if you don't want the image to be flipped
     flipImage = True
