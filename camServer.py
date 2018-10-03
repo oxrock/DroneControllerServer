@@ -27,7 +27,7 @@ def main():
     
     response = ""
     while response != "quit":
-        response = input("Enter 'quit' to exit the program.\n").lower()
+        response = raw_input("Enter 'quit' to exit the program.\n").lower()
         
     print("Exiting program")
     
