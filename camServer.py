@@ -20,9 +20,11 @@ def main():
     camSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     remoteThread = Thread(target=remoteListener, args = (remoteSocket,))
+    remoteThread.setDaemon(True)
     remoteThread.start()
     
     camThread = Thread(target=imageStreamer, args = (camSocket,))
+    camThread.setDaemon(True)
     camThread.start()
     
     response = ""
@@ -31,10 +33,6 @@ def main():
         
     print("Exiting program")
     
-    # closing the below sockets will cause errors in their threads. This is required to break out of their respective while loops and terminate properly.
-    
-    remoteSocket.close()
-    camSocket.close()
     
     
     
