@@ -91,6 +91,8 @@ def imageStreamer(socket):
                 break  # esc to quit
             ''' 
             byteString = bytes(cv2.imencode('.jpg', camImage)[1].tostring())
+            #lowers image quality for smaller datasize
+            #byteString = bytes(cv2.imencode('.jpg', camImage,[int(cv2.IMWRITE_JPEG_QUALITY), 50])[1].tostring()) 
             fileSize = len(byteString)
             totalSent = 0
             client.send(str(fileSize).encode())
