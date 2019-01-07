@@ -19,6 +19,7 @@ camServer_OLD.py is for communicating with Drone Controller With Video versions 
 It is highly reccomended that you disable wifi powersave mode if you're streaming wirelessly. You can do so with the following command: sudo iw wlan0 set power_save off
 
 It can also be beneficial to update your pi with the following commands:
+
 sudo apt-get update
 
 sudo apt-get dist-upgrade
