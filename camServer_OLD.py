@@ -3,6 +3,8 @@
 """
 Created on Sun Sep 23 13:30:45 2018
 
+This example script is compatible with versions 1.12 and below
+
 @author: oxrock
 """
 
