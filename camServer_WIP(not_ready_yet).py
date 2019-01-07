@@ -11,6 +11,8 @@ import socket
 from threading import Thread
 
 
+appCommands = ['forward','backward','left','right','action 1','action 2','action 3','action 4','stop']
+
 def main():
     global remoteProcess
     global videoProcess
@@ -67,13 +69,13 @@ def imageStreamer(socket):
     cam = cv2.VideoCapture(0)
     socket.bind(("",8081)) # 8081 is the port this socket will be listening for, this number has to match the video port assigned in the app.
     socket.listen(1)
-    
-    #cam.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)#uncomment and modify to set camera resolution width
-    #cam.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)#uncomment and modify to set camera resolution height
+    cam.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)#modify to set camera resolution width
+    cam.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)#modify to set camera resolution height
 
+    imageQuality = 50 #1-100 higher = better quality but more data
    
-    # set flip image to False if you don't want the image to be flipped
-    flipImage = True
+    # set flip image to True if you want the image to be flipped
+    flipImage = False
     
     while True:
         try:
@@ -82,31 +84,21 @@ def imageStreamer(socket):
             if flipImage:
                 camImage = cv2.flip(camImage,1)
             
-            # reduce size of image for faster streaming. Keep the 'fx' and 'fy' values the same or the image will become skewed.
+            # reduce size of image for potentially faster streaming. Keep the 'fx' and 'fy' values the same or the image will become skewed.
             camImage = cv2.resize(camImage, (0,0), fx=0.5, fy=0.5)
             
-                
-            #Remove both sets of ''' to uncomment the below code and view the webcam stream on this device. Mostly useful for testing purposes
-            '''
-            cv2.imshow('image',camImage)
-            if cv2.waitKey(1) == 27: 
-                break  # esc to quit
-            ''' 
-            byteString = bytes(cv2.imencode('.jpg', camImage)[1].tostring())
-            #lowers image quality for smaller datasize
-            #byteString = bytes(cv2.imencode('.jpg', camImage,[int(cv2.IMWRITE_JPEG_QUALITY), 50])[1].tostring()) 
+            byteString = bytes(cv2.imencode('.jpg', camImage,[int(cv2.IMWRITE_JPEG_QUALITY), imageQuality])[1].tostring())
             fileSize = len(byteString)
             totalSent = 0
-            fileSize = len(byteString)
-	          byteString = structureByteHeader(str(fileSize).encode(),8)+byteString
+	    byteString = structureByteHeader(str(fileSize).encode(),8)+byteString
+            
+            totalSent = 0
             while totalSent < fileSize:
                 totalSent += client.send(byteString[totalSent:])
-              
-            # this print statemen will give you a readout of the image's byte size, the amount of bytes sent over the connection, and the count of bytes recieved at the destination
-            #print(str(fileSize), str(totalSent),sizeConfirmation.decode('utf-8'))
+           
         
         except Exception as e:
-            #print(e)
+            print(e)
             break
         
 def moveForward():
