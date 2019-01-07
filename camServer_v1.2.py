@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Sep 23 13:30:45 2018
+compatible with versions 1.2+
 @author: oxrock
 """
 
