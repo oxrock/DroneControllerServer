@@ -12,6 +12,6 @@ sudo apt-get install python-scipy
 sudo apt-get install python-opencv
 
 
-camServer_NEW.py is for communicating with Drone Controller With Video versions 1.2 and above.
+camServer_v1.2.py is for communicating with Drone Controller With Video versions 1.2 and above.
 
 camServer_OLD.py is for communicating with Drone Controller With Video versions 1.15 and below.
