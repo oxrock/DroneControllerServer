@@ -16,4 +16,4 @@ camServer_v1.2.py is for communicating with Drone Controller With Video versions
 
 camServer_OLD.py is for communicating with Drone Controller With Video versions 1.15 and below.
 
-It is highly reccomended that you disable wifi powersave mode if you're streaming wirelessly. YOu can do so with the following command: sudo iw wlan0 set power_save off
+It is highly reccomended that you disable wifi powersave mode if you're streaming wirelessly. You can do so with the following command: sudo iw wlan0 set power_save off
