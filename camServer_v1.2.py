@@ -37,6 +37,7 @@ def main():
     
     
 def structureByteHeader(numberBytes,desiredLength):
+    #sets the byte header to a uniform length that the app expects while allowing custom resolutions
     while len(numberBytes) < desiredLength:
         numberBytes +=  str(" ").encode()
     return numberBytes    
