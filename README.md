@@ -20,6 +20,8 @@ It is highly reccomended that you disable wifi powersave mode if you're streamin
 
 It can also be beneficial to update your pi with the following commands:
 sudo apt-get update
+
 sudo apt-get dist-upgrade
+
 sudo rpi-update
 
