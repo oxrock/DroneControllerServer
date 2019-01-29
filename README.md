@@ -3,7 +3,13 @@ An example server script to use in conjunction with "Drone Controller With Video
 
 The provided sample code should work for either python 2 or 3, although it was tested mainly on 2.7. If you're using this code on a raspberry pi, then I suggest trying to get it working on python 2 if possible. This script requires opencv which can be a larger hassle to install properly for python 3 on raspberry pi devices.
 
-Installing opencv for python2 on pi should be simply accomplished by the following:
+In an effort to improve accessibility as well as performance, you  now have the option to view MJPEG streams such as those used in the popular pi program Motion. Users controlling drones across vast distances should see an INCREDIBLE improvements to video response times if utilizing the new motion functionality.
+
+Motion is really easy to setup especially with the help of a guide like this one: https://pimylifeup.com/raspberry-pi-webcam-server/
+
+A server script will still need to run on your pi device to to handle drone inputs. if you're using motion for streaming video, you'll need to trim out the existing camera code. Using Motion is by no means mandatory. If your script worked in version 1.2, it will still work in version 1.25. Just make sure "Server Script" is selected from the drop down menu in video options.
+
+Installing opencv for python2 on pi should be simply accomplished by the following(If not using motion to handle video streaming):
 
 sudo apt-get install python-numpy
 
